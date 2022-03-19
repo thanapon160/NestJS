@@ -1,3 +1,9 @@
+## Nest Command
+```bash
+# create service
+$ nest g s
+```
+
 ## Decorator
 ### Query
 ```bash
