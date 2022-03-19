@@ -1,7 +1,7 @@
-### Decorator
-## Query
+## Decorator
+### Query
 ```bash
 # Query param after '?"
-(@Query() val)
+@Query() val
 localhost:3000/coffees/flavors?val=xxxx
 ```
