@@ -13,6 +13,8 @@ import {
 } from '@nestjs/common';
 import { response } from 'express';
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class coffeesController {
@@ -41,10 +43,16 @@ export class coffeesController {
   // }
 
   // #Method Post
+  // @Post()
+  // create(@Body() body: Record<string, string>) {
+  //   console.log(body);
+  //   return body;
+  // }
   @Post()
-  create(@Body() body: Record<string, string>) {
-    console.log(body);
-    return body;
+  create(@Body() createCoffeeDto: CreateCoffeeDto, @Res() response) {
+    console.log(createCoffeeDto, 'created')
+    response.status(201).send('Coffee has been created')
+    return this.coffeesService.create(createCoffeeDto)
   }
   // @Post()
   // @HttpCode(HttpStatus.CREATED)
@@ -55,9 +63,9 @@ export class coffeesController {
 
   // #Method Update
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body) {
-    return this.coffeesService.update(id, body);
-    // return `This action updates #${id} coffee`;
+  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
+    this.coffeesService.update(id, updateCoffeeDto);
+    return `This action updates #${id} coffee`;
   }
 
   // #Method Delete
