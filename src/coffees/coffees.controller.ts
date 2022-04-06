@@ -50,8 +50,8 @@ export class coffeesController {
   // }
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto, @Res() response) {
-    console.log(createCoffeeDto, 'created')
-    response.status(201).send('Coffee has been created')
+    console.log(createCoffeeDto instanceof CreateCoffeeDto)
+    response.status(201).send(createCoffeeDto)
     return this.coffeesService.create(createCoffeeDto)
   }
   // @Post()
