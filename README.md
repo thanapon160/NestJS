@@ -71,3 +71,27 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## setting up migrations
+
+1. create 'ormconfig.js' file  
+/* RUNNING MIGRATIONS */  
+  
+/**  
+ * 💡 Remember 💡  
+ * You must BUILD your Nest project (so that everything is output to the `/dist/` folder,  
+ * before a Migration can run, it needs compilated files.  
+ */  
+  
+// Compile project first  
+npm run build  
+  
+// Run migration(s)  
+npx typeorm migration:  
+typeorm migration:run -d [path]
+  
+// REVERT migration(s)  
+npx typeorm migration:revert  
+  
+// Let TypeOrm generate migrations (for you)  
+npx typeorm migration:generate -n SchemaSync  
